@@ -32,9 +32,7 @@ public class Team implements Serializable{
 	public Team() {
 		
 	}
-	public Team(long id, String name, String city, Integer wins, Integer losses, Division division) {
-		super();
-		this.id = id;
+	public Team(String name, String city, Integer wins, Integer losses, Division division) {
 		this.name = name;
 		this.city = city;
 		this.wins = wins;

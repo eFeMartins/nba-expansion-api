@@ -9,6 +9,8 @@ import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -20,8 +22,14 @@ public class Match implements Serializable{
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long id;
 	
+	@ManyToOne
+    @JoinColumn(name = "home_team_id")
 	private Team homeTeam;
+	
+	@ManyToOne
+    @JoinColumn(name = "away_team_id")
 	private Team awayTeam;
+	
 	private Integer homeScore;
 	private Integer awayScore;
 	
@@ -31,8 +39,7 @@ public class Match implements Serializable{
 	public Match() {
 		
 	}
-	public Match(long id, Team homeTeam, Team awayTeam, Integer homeScore, Integer awayScore, MatchStatus status) {
-		this.id = id;
+	public Match(Team homeTeam, Team awayTeam, Integer homeScore, Integer awayScore, MatchStatus status) {
 		this.homeTeam = homeTeam;
 		this.awayTeam = awayTeam;
 		this.homeScore = homeScore;
@@ -77,7 +84,7 @@ public class Match implements Serializable{
 		this.status = status;
 	}
 	
-	public void finisMatch(Integer homeScore, Integer awayScore) {
+	public void finishMatch(int homeScore, int awayScore) {
 		this.homeScore = homeScore;
 		this.awayScore = awayScore;
 		status = MatchStatus.FINISHED;

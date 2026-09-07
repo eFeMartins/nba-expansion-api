@@ -30,8 +30,7 @@ public class Conference implements Serializable{
 	public Conference() {
 		
 	}
-	public Conference(long id, String name, Set<Division> divisions) {
-		this.id = id;
+	public Conference(String name, Set<Division> divisions) {
 		this.name = name;
 		this.divisions = divisions;
 	}

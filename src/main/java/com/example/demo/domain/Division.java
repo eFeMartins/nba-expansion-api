@@ -35,8 +35,7 @@ public class Division implements Serializable{
 	public Division() {
 		
 	}
-	public Division(long id, String name, Conference conference, Set<Team> teams) {
-		this.id = id;
+	public Division(String name, Conference conference, Set<Team> teams) {
 		this.name = name;
 		this.conference = conference;
 		this.teams = teams;
