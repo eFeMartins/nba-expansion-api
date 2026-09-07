@@ -1,14 +1,32 @@
 package com.example.demo.domain;
 
+import java.io.Serializable;
 import java.util.Objects;
 
-public class Team {
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
+
+@Entity
+@Table(name = "tb_team")
+public class Team implements Serializable{
+	private static final long serialVersionUID = 1L;
+	
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long id;
+	
 	private String name;
 	private String city;
 	private Integer wins;
 	private Integer losses;
 	
+	@ManyToOne
+	@JoinColumn(name = "division_id")
 	private Division division;
 	
 	public Team() {
@@ -62,11 +80,11 @@ public class Team {
 	}
 	
 	public void addWin() {
-		
+		wins++;
 	}
 	
 	public void addLoss() {
-		
+		losses++;
 	}
 	public Double getWinPercentage() {
 		return (double) ((wins / 62) * 100);

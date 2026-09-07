@@ -1,13 +1,31 @@
 package com.example.demo.domain;
 
+import java.io.Serializable;
 import java.util.Objects;
 
-public class Match {
+import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+@Entity
+@Table(name = "tb_match")
+public class Match implements Serializable{
+	private static final long serialVersionUID = 1L;
+	
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long id;
+	
 	private Team homeTeam;
 	private Team awayTeam;
 	private Integer homeScore;
 	private Integer awayScore;
+	
+	@Enumerated(EnumType.STRING)
 	private  MatchStatus status;
 	
 	public Match() {
@@ -60,7 +78,9 @@ public class Match {
 	}
 	
 	public void finisMatch(Integer homeScore, Integer awayScore) {
-		
+		this.homeScore = homeScore;
+		this.awayScore = awayScore;
+		status = MatchStatus.FINISHED;
 	}
 	
 	@Override
