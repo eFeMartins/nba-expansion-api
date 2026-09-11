@@ -22,16 +22,16 @@ import com.example.demo.repositories.TeamRepository;
 public class TestConfig implements CommandLineRunner {
 
 	@Autowired
-    private ConferenceRepository conferenceRepository;
+	private ConferenceRepository conferenceRepository;
 
-    @Autowired
-    private DivisionRepository divisionRepository;
+	@Autowired
+	private DivisionRepository divisionRepository;
 
-    @Autowired
-    private TeamRepository teamRepository;
+	@Autowired
+	private TeamRepository teamRepository;
 
-    @Autowired
-    private MatchRepository matchRepository;
+	@Autowired
+	private MatchRepository matchRepository;
 
 	@Override
 	public void run(String... args) throws Exception {
