@@ -28,4 +28,32 @@ public class MatchService {
 		return repository.findById(id)
 				.orElseThrow(() -> new ResourceNotFoundException(""));
 	}
+	
+	/*
+	 * Regra do Clone: Um time não pode jogar contra si mesmo.
+	 *  Ao criar ou atualizar uma partida, o Serviço deve verificar se o homeTeam é diferente do awayTeam.
+	 *   Se forem iguais, deve lançar uma exceção de validação.
+	 */
+	
+	/*
+	 * Regra de Status x Placar:
+	 * Se a partida está com status SCHEDULED (Agendada),
+	 *  os placares devem ser zero ou nulos.
+	 *  
+	 * Se a partida está com status FINISHED (Finalizada), 
+	 *  os placares devem obrigatoriamente existir (não podem ser nulos).
+	 */
+	
+	/*
+	 * Regra do Empate (Específica de Basquete):
+	 *  No basquete não existe empate final (o jogo vai para prorrogações até alguém ganhar). Logo, se o status for FINISHED,
+	 *  o Serviço deve validar se homeScore é diferente de awayScore.
+	 */
+	
+	/*
+	 * Consultas Específicas:
+	 * Buscar todas as partidas de um time específico (seja como mandante ou visitante).
+	 * 
+	 * Buscar partidas pelo status (ex: listar apenas os jogos de hoje que estão SCHEDULED). 
+	 */
 }
